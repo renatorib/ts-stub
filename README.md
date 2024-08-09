@@ -49,7 +49,7 @@ The ideia is to create a different build output on development that works like a
 > Otherwise it will **not** bring any benefit, unless you do manual symlinks through your local repos.
 
 > **TL;DR**  
-> Add `{ "stub": "ts-stub --clear" }` script to all pacakges and execute all at once.
+> Add `{ "stub": "ts-stub --clear" }` script to all packages and execute all at once.
 
 <br>
 
@@ -62,7 +62,7 @@ pnpm add -D ts-stub
 
 <br>
 
-### `2` Add a separate build script to stubbing your pacakges
+### `2` Add a separate build script to stubbing your packages
 
 <kbd>packages/a/package.json</kbd>
 
@@ -235,7 +235,7 @@ They also do build stubbing with the <kbd>--stub</kbd> flag.
 
 **1. Convenience**
 
-> If you already use _unbuild_ to bundle your pacakges, there is **absolutely no reason** for you to use _ts-stub_.  
+> If you already use _unbuild_ to bundle your packages, there is **absolutely no reason** for you to use _ts-stub_.  
 > Just go with _unbuild --stub_!
 
 **2. ESM**

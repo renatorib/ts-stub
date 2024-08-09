@@ -37,6 +37,7 @@
     "comment-hole": "^0.1.1",
     "import-meta-resolve": "^4.1.0",
     "prettier": "^3.3.3",
+    "semantic-release": "^24.0.0",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
