@@ -1,0 +1,55 @@
+{
+  "name": "ts-stub",
+  "version": "0.0.0-semantic-release",
+  "description": "Stub your build to improve monorepo DX",
+  "author": "Renato Ribeiro <hi@rena.to>",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "ts-stub": "dist/cli.cjs"
+  },
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "readme": "tsx ./scripts/enhance-readme.ts",
+    "build": "rm -rf ./dist && tsup && pnpm readme",
+    "prepack": "vitest run && pnpm build"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.5.0"
+  },
+  "dependencies": {
+    "@commander-js/extra-typings": "^12.1.0",
+    "commander": "^12.1.0",
+    "minimist": "^1.2.8",
+    "picocolors": "^1.0.1",
+    "tsx": "^4.16.5"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.5",
+    "@types/node": "^22.1.0",
+    "comment-hole": "^0.1.1",
+    "import-meta-resolve": "^4.1.0",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "prettier": {
+    "printWidth": 100
+  },
+  "keywords": [
+    "tsx",
+    "stub",
+    "ts-stub",
+    "dx",
+    "typescript",
+    "dev"
+  ]
+}
