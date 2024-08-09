@@ -35,37 +35,35 @@ The ideia is to create a different build output on development that works like a
 See the explained diagram below:
 
 <p align="center">
-
-![diagram](.github/assets/diagram-dark.png#gh-dark-mode-only)
-![diagram](.github/assets/diagram-light.png#gh-light-mode-only)
-
+  <img alt="diagram" src=".github/assets/diagram-dark.png#gh-dark-mode-only" align="center" />
+  <img alt="diagram" src=".github/assets/diagram-light.png#gh-light-mode-only" align="center" />
 </p>
 
----
+<br>
+<br>
+<br>
 
-## 🧑‍💻 Getting started
+## 👉 Getting started
 
 > [!NOTE]  
 > `ts-stub` is made to be used in workspaces/multi-package repos (aka monorepos).  
 > Otherwise it will **not** bring any benefit, unless you do manual symlinks through your local repos.
 
-_**TL;DR:** Add `{ "stub": "ts-stub --clear" }` script to all pacakges and execute all at once._
+> **TL;DR**  
+> Add `{ "stub": "ts-stub --clear" }` script to all pacakges and execute all at once.
 
 ---
 
-### `1` Install `ts-stub` with your package manager
+### `1` - Install `ts-stub` with your package manager
 
-```
+```sh
 pnpm add -D ts-stub
 # npm install --save-dev ts-stub
 ```
 
 ---
 
-### `2` Add a separate build script to stubbing your pacakges
-
-> [!TIP]  
-> I recommend setting up a `prepack` or `prepublishOnly` build script to prevent publishing the stubbed build mistakenly
+### `2` - Add a separate build script to stubbing your pacakges
 
 `packages/a/package.json`
 
@@ -74,8 +72,7 @@ pnpm add -D ts-stub
   "name": "package-a",
   "scripts": {
     "build": "tsup",
-+   "stub": "ts-stub --clear",
-+   "prepack": "npm build"
++   "stub": "ts-stub --clear"
   }
 }
 ```
@@ -87,15 +84,14 @@ pnpm add -D ts-stub
   "name": "package-b",
   "scripts": {
     "build": "tsup",
-+   "stub": "ts-stub --clear",
-+   "prepack": "npm build"
++   "stub": "ts-stub --clear"
   }
 }
 ```
 
 ---
 
-### `3` Stub all at once
+### `3` - Stub all at once
 
 Use your favorite tool to execute all packages stub script (like `pnpm -r`, `turbo`, `lerna`, `nx`, etc.)
 
@@ -103,7 +99,7 @@ Use your favorite tool to execute all packages stub script (like `pnpm -r`, `tur
 pnpm -r stub
 ```
 
-```bash
+```sh
 packages/a stub$ ts-stub --clear
 │ ✓ Cleaned …my-monorepo/packages/a/dist
 │ ✓ Stubbed …e/packages/a/dist/index.mjs
@@ -117,30 +113,34 @@ packages/b stub$ ts-stub --clear
 
 ```
 
+<br>
+<br>
+<br>
+
 ## 📖 Documentation
 
 By default `ts-stub` will use `src/index.ts` as entrypoint and `dist` as your build folder.  
 But everyting is configurable!
 
-**Input and output files**
+**Input and output files:**
 
 ```sh
 ts-stub --input=src/foo.ts --output=build
 ```
 
-**Output format**
+**Output format:**
 
 ```sh
 ts-stub --format=cjs
 ```
 
-**Output format extension**
+**Output format extension:**
 
 ```sh
 ts-stub --format=cjs:js
 ```
 
-**Custom working directory**
+**Custom working directory:**
 
 ```sh
 ts-stub packages/foo
@@ -174,9 +174,13 @@ Options:
 
 <!-- </auto:help> -->
 
+<br>
+<br>
+<br>
+
 ## 📃 Developer API
 
-**Single entry**
+**Single entry:**
 
 ```ts
 import { stub } from "ts-stub";
@@ -194,7 +198,7 @@ stub({
 });
 ```
 
-**Multiple entries**
+**Multiple entries:**
 
 ```ts
 import { stub } from "ts-stub";
@@ -219,31 +223,36 @@ stub({
 });
 ```
 
-## When `ts-stub` and `unbuild --stub`
+<br>
+<br>
+<br>
 
-First of all: `unbuild` is amazing!  
-The first time I saw the concept was in [Anthony Fu's post](https://antfu.me/posts/publish-esm-and-cjs) and `ts-stub` was largely inspired by it.
-If you don't know `unbuild` yet: it is an package bundler based on rollup made by the folks of unjs.
+## `unbuild --stub` vs `ts-stub`
 
-### Reasons to prefer `unbuild --stub`
+> First of all: `unbuild` is amazing!  
+> The first time I saw the concept was in [Anthony Fu's post](https://antfu.me/posts/publish-esm-and-cjs) and `ts-stub` was largely inspired by it.
+> If you don't know `unbuild` yet: it is a rollup-based package bundler made by the folks of unjs.
 
-**`1` convenience**
+###### Reasons to prefer _unbuild --stub_
 
-If you already use `unbuild` to bundle your pacakges, there is **absolutely no reason** for you to use `ts-stub`.  
-Just go with `unbuild --stub`!
+**1. Convenience**
 
-**`2` esm**
+> If you already use `unbuild` to bundle your pacakges, there is **absolutely no reason** for you to use `ts-stub`.  
+> Just go with `unbuild --stub`!
 
-`ts-stub` is designed to typescript only. If you just bundle esm code and still need stubbing (there's better alternatives tho) just go with `unbuild --stub`
+**2. ESM**
 
-### Reasons to prefer `ts-build`
+> `ts-stub` is designed to typescript only.  
+> If you just bundle esm code and still need stubbing (there's better alternatives tho) just go with `unbuild --stub`
 
-**`1` lighter**
+###### Reasons to prefer _ts-build_
+
+**1. Lighter**
 
 `unbuild` is a complete bundler, it's heavier because their scope is larger.  
 `ts-stub` is an lighter alternative if you already have a bundler setup and just want stubbing.
 
-**`2` may be faster**
+**2. May be faster**
 
 > `unbuild --stub` is powered by `jiti` (that uses `babel`) for runtime and `rullup` with plugins for the esm exports bundle
 > `ts-stub` is powered by `tsx` (that uses `esbuild`) for runtime and static analysis for the esm exports bundle
