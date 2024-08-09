@@ -35,14 +35,10 @@ The ideia is to create a different build output on development that works like a
 See the explained diagram below:
 
 <p align="center">
-<picture>
-	<source media="(prefers-color-scheme: dark)" srcset=".github/assets/diagram-dark.png">
-	<img alt="ts-stub" src=".github/assets/diagram-light.png">
-</picture>
-</p>
 
-<p align="center">
-<img src=".github/assets/diagram.png" />
+![diagram](.github/assets/diagram-dark.png#gh-dark-mode-only)
+![diagram](.github/assets/diagram-light.png#gh-light-mode-only)
+
 </p>
 
 ---
