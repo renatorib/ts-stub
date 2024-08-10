@@ -1,10 +1,10 @@
-# You may not need stubbing
+# You might not need stubbing
 
 There's some alternatives that can match your expectations without the need to stubbing your build
 
 ## TypeScript
 
-### Conditions solution
+### The conditions solution
 
 You can use node **conditional exports** to point your main to your source file in development.
 
@@ -41,7 +41,7 @@ Local:
 }
 ```
 
-Generate for publishing:
+Generated for publishing:
 
 ```json
 {
